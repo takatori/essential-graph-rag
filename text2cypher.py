@@ -23,8 +23,6 @@ class Text2Cypher:
     def get_full_prompt(self) -> str:
         prompt = self.prompt_template["static"]["instructions"]
         for section in self.prompt_template["dynamic"]:        
-            print(f"Adding section: {section}")
-            print(f"Dynamic sections value: {self.dynamic_sections}")
             if section in self.dynamic_sections:
                 prompt += self.prompt_template["dynamic"][section].format(
                     self.dynamic_sections[section]
@@ -41,8 +39,7 @@ class Text2Cypher:
             messages=[
                 {"role": "user", "content": prompt}
             ]
-        )
-        print(f"Generated Cypher: {result}")
+        )        
         return result['message']['content'].strip()
         
 

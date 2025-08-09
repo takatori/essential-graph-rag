@@ -77,12 +77,10 @@ def chat(messages, model="llama3.2", config={}):
 
 
 def tool_choice(messages, model="llama3.2", tools=[], config={}):
-    print(f"tool choice Messages: {messages}")
     response = ollama.chat(
         model=model,
         messages=messages,
         tools=tools,
         **config
     )
-    print(f"tool choice Response: {response}")
     return response['message']['tool_calls']
